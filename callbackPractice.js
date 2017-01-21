@@ -1,16 +1,16 @@
 /* In this repo your job is to write functions to make each function call work properly.
-Below is a sample problem 
+Below is a sample problem
 
   //code here for sayHi
 
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
-   
 
-and what you should write is the sayHi function that makes the code above work, 
-    
-    
+
+and what you should write is the sayHi function that makes the code above work,
+
+
    var sayHi = function(str, cb){
     cb(str);
    }
@@ -18,14 +18,16 @@ and what you should write is the sayHi function that makes the code above work,
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay); //should alert ('Hi Katie')'
    });
-    
-    
+
+
 */
 
 
 
   //Code Here for first
-  
+function first(arr,cb) {
+    cb(arr[0])
+  }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -40,7 +42,9 @@ first(names, function(firstName){
 
 
   //Code Here for last
-
+function last(arr, cb) {
+  cb(arr[arr.length-1])
+}
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
 });
@@ -57,7 +61,10 @@ last(names, function(lastName){
 
 
   //Code Here for multiply
-
+function multiply(num1, num2, cb) {
+  var answer = num1*num2;
+  cb(answer);
+}
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 })
@@ -73,7 +80,10 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
-
+function contains(arr, name, cb) {
+  var result = arr.includes(name);
+  cb(result);
+}
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -92,7 +102,17 @@ contains(names, 'Colt', function(result){
 
 
     //Code Here for uniq
+function uniq(arr, cb) {
+  var uniqArr = [];
+  for (var i=0;i<arr.length;i++) {
+    if (!uniqArr.includes(arr[i])) {
+      uniqArr.push(arr[i]);
+    }
+  }
+  cb(uniqArr);
 
+  })
+}
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -146,5 +166,5 @@ var users = [
 ];
 
 getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address);
 });
